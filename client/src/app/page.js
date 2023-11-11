@@ -9,17 +9,11 @@ const getMovieData = () => {
   });
 };
 
+const getTrendingMovies = () => {};
+
 const Home = async () => {
-  let movieData = {
-    image: "",
-  }
   const movies = await getMovieData();
 
-  movies.map((movie) => {
-    movieData = {
-      image: movie.poster_path
-    }
-  })
   return (
     <div className={styles.home}>
       <nav>
@@ -39,7 +33,15 @@ const Home = async () => {
             <span>View All</span>
           </div>
           <div>
-            <img src={`https://image.tmdb.org/t/p/original/${movieData.image}`} alt="random photo" />
+            {movies.map((movie) => {
+              return (
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                  alt="random photo"
+                  className={styles.img}
+                />
+              );
+            }).slice(8)}
           </div>
         </div>
         {/* Upcoming Section*/}
@@ -81,4 +83,3 @@ const Home = async () => {
 };
 
 export default Home;
-
