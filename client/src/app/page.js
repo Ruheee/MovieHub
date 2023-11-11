@@ -4,17 +4,22 @@ import styles from "@/../../styles/home.module.css";
 
 // access the REST API and pull movies
 const getMovieData = () => {
-  return axios.get("http://localhost:3001/api/movies")
-  .then((response) => {
+  return axios.get("http://localhost:3001/api/movies").then((response) => {
     return response.data.results;
   });
 };
 
 const Home = async () => {
-
+  let movieData = {
+    image: "",
+  }
   const movies = await getMovieData();
-  
-  
+
+  movies.map((movie) => {
+    movieData = {
+      image: movie.poster_path
+    }
+  })
   return (
     <div className={styles.home}>
       <nav>
@@ -34,7 +39,7 @@ const Home = async () => {
             <span>View All</span>
           </div>
           <div>
-            <img src=""alt="random photo" />
+            <img src={`https://image.tmdb.org/t/p/original/${movieData.image}`} alt="random photo" />
           </div>
         </div>
         {/* Upcoming Section*/}
