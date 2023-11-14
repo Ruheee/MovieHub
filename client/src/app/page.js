@@ -1,7 +1,15 @@
 import React from "react";
+
+// SCSS
+import "../../styles/home.scss"
+
+//libraries used
 const axios = require("axios");
-import styles from "@/../../styles/home.module.css";
-import Dashboard from "../../components/HomeSection";
+
+// access to components
+import Dashboard from "../../components/Dashboard";
+import SideNavBar from "../../components/SideNavBar";
+import SideFilter from "../../components/SideFilter";
 
 // access the REST API and pull movies
 const getMovieData = async () => {
@@ -16,15 +24,15 @@ const getTrendingMovies = async () => {
   return await axios
     .get("http://localhost:3001/api/trending")
     .then((response) => {
-      return response.data;
+      return response.data.results;
     });
 };
 
 const getUpcomingMovies = async () => {
   return await axios
-    .get("http://localhost:3001/api/upcoming") 
+    .get("http://localhost:3001/api/upcoming")
     .then((response) => {
-      return response.data;
+      return response.data.results;
     });
 };
 
@@ -34,40 +42,16 @@ const Home = async () => {
   const upcomingMovies = await getUpcomingMovies();
 
   return (
-    <div className={styles.home}>
-      <nav>
-        <h1>Movie Hub</h1>
-        <p>Home</p>
-        <p>Movies</p>
-        <p>TV Shows</p>
-        <p>Upcoming</p>
-      </nav>
+    <div className="home">
+      <SideNavBar />
       <section>
-        <Dashboard movies={movies} styles={styles} trendingMovies={trendingMovies} upcomingMovies={upcomingMovies}/>
+        <Dashboard
+          movies={movies}
+          trendingMovies={trendingMovies}
+          upcomingMovies={upcomingMovies}
+        />
       </section>
-
-      <div>
-        <div>
-          <button>Sign In</button>
-          {/*Clerk Auth*/}
-        </div>
-        <div>
-          <ul>
-            <li>Drama</li>
-            <li>Comedy</li>
-            <li>Action</li>
-            <li>Adventure</li>
-            <li>Crime</li>
-          </ul>
-          <ul>
-            <li>Google</li>
-            <li>Apple Tv</li>
-            <li>Amazon</li>
-            <li>Disney</li>
-            <li>Starz</li>
-          </ul>
-        </div>
-      </div>
+      <SideFilter />
     </div>
   );
 };
