@@ -6,3 +6,8 @@
   width: 100px;
   height: auto;
 }
+
+.img_div{
+  display: flex;
+  flex-direction: row;
+}

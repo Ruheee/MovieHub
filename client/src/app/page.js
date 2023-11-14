@@ -1,18 +1,37 @@
 import React from "react";
 const axios = require("axios");
 import styles from "@/../../styles/home.module.css";
+import Dashboard from "../../components/HomeSection";
 
 // access the REST API and pull movies
-const getMovieData = () => {
-  return axios.get("http://localhost:3001/api/movies").then((response) => {
-    return response.data.results;
-  });
+const getMovieData = async () => {
+  return await axios
+    .get("http://localhost:3001/api/movies")
+    .then((response) => {
+      return response.data.results;
+    });
 };
 
-const getTrendingMovies = () => {};
+const getTrendingMovies = async () => {
+  return await axios
+    .get("http://localhost:3001/api/trending")
+    .then((response) => {
+      return response.data;
+    });
+};
+
+const getUpcomingMovies = async () => {
+  return await axios
+    .get("http://localhost:3001/api/upcoming") 
+    .then((response) => {
+      return response.data;
+    });
+};
 
 const Home = async () => {
   const movies = await getMovieData();
+  const trendingMovies = await getTrendingMovies();
+  const upcomingMovies = await getUpcomingMovies();
 
   return (
     <div className={styles.home}>
@@ -24,36 +43,7 @@ const Home = async () => {
         <p>Upcoming</p>
       </nav>
       <section>
-        {/*Client side search bar*/}
-        <img src="" alt="Random Movie Image" />
-        {/* Trending Section*/}
-        <div>
-          <div>
-            <h5>Trending</h5>
-            <span>View All</span>
-          </div>
-          <div>
-            {movies.map((movie) => {
-              return (
-                <img
-                  src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                  alt="random photo"
-                  className={styles.img}
-                />
-              );
-            }).slice(8)}
-          </div>
-        </div>
-        {/* Upcoming Section*/}
-        <div>
-          <div>
-            <h5>Upcoming</h5>
-            <span>View All</span>
-          </div>
-          <div>
-            <img src="" alt="random photo" />
-          </div>
-        </div>
+        <Dashboard movies={movies} styles={styles} trendingMovies={trendingMovies} upcomingMovies={upcomingMovies}/>
       </section>
 
       <div>
