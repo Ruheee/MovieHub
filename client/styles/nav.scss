@@ -1,8 +1,52 @@
-nav{
+@import "../styles/global.scss";
+
+nav {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 170px;
+  background-color: $sidebar-background;
+  border-radius: 0 40px 40px 0;
+  margin-right: 15px;
+  text-align: center;
+  h1 {
+    color: #3dd2cc;
+    margin: 20px 80px;
+    margin: 30px auto;
+  }
 }
 
-.link{
+.nav--items {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+
+.link {
+  display: flex;
+  justify-content: center;
   text-decoration: none;
+  color: $clickable-paragraphs;
+  font-size: 16px;
+  height: 80px;
+  padding-top: 27px;
+  font-family: "Roboto", sans-serif;
+  color: $clickable-paragraphs;
+  &:hover {
+    color: white;
+    background-color: rgb(61, 210, 204, 0.4);
+    border-radius: 5px;
+  }
+  &:focus {
+    color: white;
+    background-color: rgb(61, 210, 204, 0.4);
+    border-right: 5px solid rgb(61, 210, 204);
+    border-radius: 5px;
+  }
+}
+
+.icon{
+  margin-right: 5px;
 }
