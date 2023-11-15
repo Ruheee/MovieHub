@@ -1,13 +1,12 @@
 import React from "react";
 
 // SCSS
-import "../../styles/home.scss"
 
 //libraries used
 const axios = require("axios");
 
 // access to components
-import Dashboard from "../../components/Dashboard";
+import Dashboard from "../../components/Home";
 import SideNavBar from "../../components/SideNavBar";
 import SideFilter from "../../components/SideFilter";
 

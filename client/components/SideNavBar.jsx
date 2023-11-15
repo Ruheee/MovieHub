@@ -12,7 +12,7 @@ import "../styles/nav.scss";
 export default function SideNavBar() {
   return (
     <nav>
-      <h1>Movie Hub</h1>
+      <h1>MovieHub</h1>
       <div className="nav--items">
         <Link href={"/"} className="link">
           <FaHome className="icon" />
