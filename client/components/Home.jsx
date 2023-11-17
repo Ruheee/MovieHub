@@ -1,23 +1,22 @@
 "use client";
 import "../styles/Dashboard.scss";
-import { useState } from "react";
+
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { useState } from "react";
 
 export default function Dashboard({ movies, upcomingMovies, trendingMovies }) {
-  const [currentPage, setCurrentPage] = useState({
-    initalMovies: 0,
-    nextMovies: 8,
-  });
+  const [firstMovie, setFirstMovie] = useState(0);
+  const [lastMovie, setLastMovie] = useState(8);
   const randomNumber = (min, max) => {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  const changeMovies = () => {
-    if (currentPage.nextMovies > 16) {
-      setsetCurrentPage({ initalMovies: 0, nextMovies: 8 });
-    }
-    setCurrentPage(currentPage.initalMovies + 8, currentPage.nextMovies + 8);
+  const changeNumber = (event) => {
+    event.preventDefault();
+    if(lastMovie > 20) {return setFirstMovie(0), setLastMovie(8)};
+    setFirstMovie(firstMovie + 8);
+    setLastMovie(lastMovie + 8);
   };
 
   return (
@@ -42,10 +41,7 @@ export default function Dashboard({ movies, upcomingMovies, trendingMovies }) {
           <h5>Trending</h5>
           <div>
             <MdKeyboardArrowLeft className="arrow-left" />
-            <MdKeyboardArrowRight
-              className="arrow-right"
-              onClick={() => changeMovies()}
-            />
+            <MdKeyboardArrowRight className="arrow-right" onClick={() => changeNumber(event)}/>
           </div>
         </div>
         {trendingMovies
@@ -59,7 +55,7 @@ export default function Dashboard({ movies, upcomingMovies, trendingMovies }) {
               />
             );
           })
-          .slice(currentPage.initalMovies, currentPage.nextMovies)}
+          .slice(firstMovie, lastMovie)}
       </div>
       {/* Upcoming Section*/}
       <div className="home--movie--section">
