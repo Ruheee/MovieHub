@@ -8,7 +8,6 @@ nav {
   width: 170px;
   background-color: $sidebar-background;
   border-radius: 0 40px 40px 0;
-  margin-right: 15px;
   text-align: center;
   font-family: "Roboto", sans-serif;
   h1 {
@@ -22,7 +21,6 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  
 }
 
 .link {
@@ -48,6 +46,6 @@ nav {
   }
 }
 
-.icon{
+.icon {
   margin-right: 5px;
 }

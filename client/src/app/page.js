@@ -7,8 +7,6 @@ const axios = require("axios");
 
 // access to components
 import Dashboard from "../../components/Home";
-import SideNavBar from "../../components/SideNavBar";
-import SideFilter from "../../components/SideFilter";
 
 // access the REST API and pull movies
 const getMovieData = async () => {
@@ -41,8 +39,7 @@ const Home = async () => {
   const upcomingMovies = await getUpcomingMovies();
 
   return (
-    <div className="home">
-      <SideNavBar />
+    <div>
       <section>
         <Dashboard
           movies={movies}
@@ -50,7 +47,6 @@ const Home = async () => {
           upcomingMovies={upcomingMovies}
         />
       </section>
-      <SideFilter />
     </div>
   );
 };

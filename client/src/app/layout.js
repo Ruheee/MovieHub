@@ -1,4 +1,6 @@
 // SCSS
+import SideFilter from "../../components/SideFilter"
+import SideNavBar from "../../components/SideNavBar"
 import "../../styles/global.scss"
 
 export const metadata = {
@@ -9,7 +11,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="main">{children}</body>
+      <body className="main">
+        <SideNavBar />
+        {children}
+        <SideFilter />
+        </body>
     </html>
   )
 }

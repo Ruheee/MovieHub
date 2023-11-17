@@ -11,10 +11,12 @@ $font-fam: "Roboto";
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   color: white;
 }
 
 .main {
   background-color: #191919;
   max-height: 100vh;
+  display: flex;
 }
