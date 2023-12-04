@@ -14,26 +14,7 @@ export default function SideNavBar() {
     <nav>
       <h1>MovieHub</h1>
       <div className="nav--items">
-        <Link href={"/"} className="link">
-          <FaHome className="icon" />
-          <p>Home</p>
-        </Link>
-        <Link href={"/movies"} className="link">
-          <BiSolidCameraMovie className="icon" />
-          <p>Movies</p>
-        </Link>
-        <Link href={"/tv_shows"} className="link">
-          <PiTelevisionSimpleFill className="icon" />
-          <p>TV Shows</p>
-        </Link>
-        <Link href={"/movies/trending"} className="link">
-          <IoIosTrendingUp className="icon" />
-          <p>Trending</p>
-        </Link>
-        <Link href={"/movies/upcoming"} className="link">
-          <MdOutlineUpcoming className="icon" />
-          <p>Upcoming</p>
-        </Link>
+        
       </div>
     </nav>
   );
