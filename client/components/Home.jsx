@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function Dashboard({ movies, upcomingMovies, trendingMovies }) {
   const [firstMovie, setFirstMovie] = useState(0);
   const [lastMovie, setLastMovie] = useState(8);
+  const [search, setSearch] = useState("");
   const randomNumber = (min, max) => {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -14,15 +15,22 @@ export default function Dashboard({ movies, upcomingMovies, trendingMovies }) {
 
   const changeNumber = (event) => {
     event.preventDefault();
-    if(lastMovie > 20) {return setFirstMovie(0), setLastMovie(8)};
+    if (lastMovie > 20) {
+      return setFirstMovie(0), setLastMovie(8);
+    }
     setFirstMovie(firstMovie + 8);
     setLastMovie(lastMovie + 8);
+  };
+
+  const setSearchValue = (e) => {
+    setSearch(e);
+    console.log(search);
   };
 
   return (
     <div className="dashboard-container">
       {/*Client side search bar*/}
-      <input type="text" placeholder="Search for Movies & TV Shows" />
+      <input type="text" placeholder="Search for Movies & TV Shows" onChange={(e) => setSearchValue(e.target.value)}/>
       {
         movies.map((movie, i) => {
           return (
@@ -41,7 +49,10 @@ export default function Dashboard({ movies, upcomingMovies, trendingMovies }) {
           <h5>Trending</h5>
           <div>
             <MdKeyboardArrowLeft className="arrow-left" />
-            <MdKeyboardArrowRight className="arrow-right" onClick={() => changeNumber(event)}/>
+            <MdKeyboardArrowRight
+              className="arrow-right"
+              onClick={() => changeNumber(event)}
+            />
           </div>
         </div>
         {trendingMovies
